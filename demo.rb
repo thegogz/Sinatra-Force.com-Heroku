@@ -4,6 +4,7 @@ require 'oauth2'
 require 'json'
 require 'cgi'
 require 'dalli'
+require 'memcachier'
 require 'rack/session/dalli' # For Rack sessions in Dalli
 
 $stdout.sync = true
