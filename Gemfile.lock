@@ -9,6 +9,7 @@ GEM
       rack (~> 1.1)
     json (1.6.5)
     logger (1.2.8)
+    memcachier (0.0.2)
     multi_json (1.0.4)
     multipart-post (1.1.4)
     oauth2 (0.5.2)
@@ -25,11 +26,13 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   dalli
   json
   logger
+  memcachier
   oauth2
   rack
   sinatra
