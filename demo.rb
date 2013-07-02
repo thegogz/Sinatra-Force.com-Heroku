@@ -82,6 +82,14 @@ get '/oauth/callback' do
   end
 end
 
+get '/code' do
+  query = "SELECT Id, Name FROM ApexClass ORDER BY Name"
+  
+  @classes = @access_token.get("#{@instance_url}/services/data/v28.0/tooling//query/?q=#{CGI::escape(query)}").parsed
+  
+  erb :code
+end  
+
 get '/' do
   # Field list isn't very volatile - stash it in the session
   if !session['field_list']
