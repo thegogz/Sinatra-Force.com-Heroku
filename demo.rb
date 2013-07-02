@@ -85,7 +85,7 @@ end
 get '/code' do
   query = "SELECT Id, Name FROM ApexClass ORDER BY Name"
   
-  @classes = @access_token.get("#{@instance_url}/services/data/v28.0/tooling//query/?q=#{CGI::escape(query)}").parsed
+  @classes = @access_token.get("#{@instance_url}/services/data/v28.0/tooling/query/?q=#{CGI::escape(query)}").parsed
   
   erb :code
 end  
@@ -93,7 +93,7 @@ end
 get '/' do
   # Field list isn't very volatile - stash it in the session
   if !session['field_list']
-    session['field_list'] = @access_token.get("#{@instance_url}/services/data/v21.0/sobjects/Account/describe/").parsed
+    session['field_list'] = @access_token.get("#{@instance_url}/services/data/v28.0/sobjects/Account/describe/").parsed
   end
   
   @field_list = session['field_list']
@@ -104,13 +104,13 @@ get '/' do
     query = "SELECT Name, Id from Account ORDER BY Name LIMIT 20"
   end
   
-  @accounts = @access_token.get("#{@instance_url}/services/data/v20.0/query/?q=#{CGI::escape(query)}").parsed
+  @accounts = @access_token.get("#{@instance_url}/services/data/v28.0/query/?q=#{CGI::escape(query)}").parsed
   
   erb :index
 end
 
 get '/detail' do
-  @account = @access_token.get("#{@instance_url}/services/data/v20.0/sobjects/Account/#{params[:id]}").parsed
+  @account = @access_token.get("#{@instance_url}/services/data/v28.0/sobjects/Account/#{params[:id]}").parsed
   
   erb :detail
 end
@@ -134,7 +134,7 @@ post '/action' do
 
     done = :edit
   elsif params[:delete]
-    @access_token.delete("#{@instance_url}/services/data/v20.0/sobjects/Account/#{params[:id]}")
+    @access_token.delete("#{@instance_url}/services/data/v28.0/sobjects/Account/#{params[:id]}")
     @action_value = 'Deleted'
     
     @result = Hash.new
@@ -152,7 +152,7 @@ post '/account' do
       "Industry"     => params[:Industry], 
       "TickerSymbol" => params[:TickerSymbol]}.to_json
 
-    @result = @access_token.post("#{@instance_url}/services/data/v20.0/sobjects/Account/", 
+    @result = @access_token.post("#{@instance_url}/services/data/v28.0/sobjects/Account/", 
       {:body => body, 
        :headers => {'Content-type' => 'application/json'}}).parsed
     @action_value = 'Created'
@@ -162,7 +162,7 @@ post '/account' do
       "TickerSymbol" => params[:TickerSymbol]}.to_json
 
     # No response for an update
-    @access_token.post("#{@instance_url}/services/data/v20.0/sobjects/Account/#{params[:id]}?_HttpMethod=PATCH", 
+    @access_token.post("#{@instance_url}/services/data/v28.0/sobjects/Account/#{params[:id]}?_HttpMethod=PATCH", 
       {:body => body, 
        :headers => {'Content-type' => 'application/json'}})
     @action_value = 'Updated'
