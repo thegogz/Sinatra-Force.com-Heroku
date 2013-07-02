@@ -5,11 +5,17 @@
 		<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-		<h2>Inspect of Tooling api Inspect</h2>
-		<table class="classes list">
-    <% @classes.each do |record|  %>
-		  <tr><td>  <%= record.inspect %> </tr></td>
-    <% end %>
+		<h2>List of Apex Classes</h2>
+    <h4>You have <%=  @classes['size'] %> in your org </h4>
+		<table class="classeslist">
+    <% if @classes['records'] %>
+      <tr>
+      <th>Class Name</th>
+      </tr>
+      <% @classes['records'].each do |record|  %>
+        <tr><td>  <%= record['Name] %> </td></tr>
+      <% end %>
+    <% end %>      
 		</table>
 		<br/>
 		<a href="logout" id="logout">Logout</a>
