@@ -11,9 +11,29 @@
     <% if @classes['records'] %>
       <tr>
       <th>Class Name</th>
+	  <th>Api Version</th>
+	  <th>Is Valid</th>
+	  <th>Staus</th>
+	  <th>Id</th>
       </tr>
       <% @classes['records'].each do |record|  %>
-        <tr><td>  <%= record['Name'] %> </td></tr>
+        <tr>
+			<td>
+				<%= record['Name'] %> 
+			</td>
+			<td>
+				<%= record['ApiVersion'] %> 
+			</td>
+			<td>
+				<%= record['IsValid'] %> 
+			</td>
+			<td>
+				<%= record['Status'] %> 
+			</td>
+			<td>
+				<%= record['Id'] %> 
+			</td>
+		</tr>
       <% end %>
     <% end %>      
 		</table>
