@@ -83,7 +83,7 @@ get '/oauth/callback' do
 end
 
 get '/code' do
-  query = "SELECT Id, Name, ApiVersion, IsValid, Status FROM ApexClass ORDER BY Name"
+  query = "SELECT Id, Name, ApiVersion, IsValid, Status, NamespacePrefix, LengthWithoutComments FROM ApexClass ORDER BY Name"
   
   @classes = @access_token.get("#{@instance_url}/services/data/v28.0/tooling/query/?q=#{CGI::escape(query)}").parsed
   

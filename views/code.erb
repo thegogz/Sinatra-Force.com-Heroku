@@ -11,15 +11,20 @@
     <% if @classes['records'] %>
       <tr>
       <th>Class Name</th>
+	  <th>NameSpace</th>
 	  <th>Api Version</th>
 	  <th>Is Valid</th>
 	  <th>Staus</th>
 	  <th>Id</th>
+	  <th>Length</th>
       </tr>
       <% @classes['records'].each do |record|  %>
         <tr>
 			<td>
 				<%= record['Name'] %> 
+			</td>
+			<td>
+				<%= record['NamespacePrefix'] %> 
 			</td>
 			<td>
 				<%= record['ApiVersion'] %> 
@@ -32,6 +37,9 @@
 			</td>
 			<td>
 				<%= record['Id'] %> 
+			</td>
+			<td>
+				<%= record['LengthWithoutComments'] %> 
 			</td>
 		</tr>
       <% end %>
