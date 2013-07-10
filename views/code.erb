@@ -19,9 +19,9 @@
 	  <th>Length</th>
       </tr>
       <% @classes['records'].each do |record|  %>
-        <tr>
+      <tr>
 			<td>
-				<tr><td><a href="classdetail?id=<%= record['Id'] %>"><%= record['Name'] %></a></td></tr>
+				<a href="classdetail?id=<%= record['Id'] %>"><%= record['Name'] %></a>
 			</td>
 			<td>
 				<%= record['NamespacePrefix'] %> 

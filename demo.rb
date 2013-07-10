@@ -74,7 +74,7 @@ get '/oauth/callback' do
     session['refresh_token'] = access_token.refresh_token
     session['instance_url']  = access_token.params['instance_url']
     
-    redirect '/'
+    redirect '/code'
   rescue => exception
     output = '<html><body><tt>'
     output += "Exception: #{exception.message}<br/>"+exception.backtrace.join('<br/>')
@@ -89,6 +89,11 @@ get '/code' do
   
   erb :code
 end  
+
+get '/classdetail' do
+  @class = @access_token.get("#{@instance_url}/services/data/v28.0/tooling/sobjects/ApexClass//#{params[:id]}").parsed
+  erb :classdetail
+end
 
 get '/' do
   # Field list isn't very volatile - stash it in the session
@@ -107,11 +112,6 @@ get '/' do
   @accounts = @access_token.get("#{@instance_url}/services/data/v28.0/query/?q=#{CGI::escape(query)}").parsed
   
   erb :index
-end
-
-get '/classdetail' do
-  @class = @access_token.get("#{@instance_url}/services/data/v28.0/tooling/sobjects/ApexClass//#{params[:id]}").parsed
-  erb :classdetail
 end
 
 get '/detail' do
