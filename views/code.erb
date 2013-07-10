@@ -21,7 +21,7 @@
       <% @classes['records'].each do |record|  %>
         <tr>
 			<td>
-				<%= record['Name'] %> 
+				<tr><td><a href="classdetail?id=<%= record['Id'] %>"><%= record['Name'] %></a></td></tr>
 			</td>
 			<td>
 				<%= record['NamespacePrefix'] %> 

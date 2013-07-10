@@ -109,6 +109,11 @@ get '/' do
   erb :index
 end
 
+get '/codedetail' do
+  @class = @access_token.get("#{@instance_url}/services/data/v28.0/tooling/sobjects/ApexClass//#{params[:id]}").parsed
+  erb :codedetail
+end
+
 get '/detail' do
   @account = @access_token.get("#{@instance_url}/services/data/v28.0/sobjects/Account/#{params[:id]}").parsed
   
