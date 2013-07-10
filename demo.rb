@@ -11,7 +11,7 @@ $stdout.sync = true
 
 # Dalli is a Ruby client for memcache
 def dalli_client
-  Dalli::Client.new(nil, :compression => true, :namespace => 'rack.session', :expires_in => 3600)
+  Dalli::Client.new(nil, :compress => true, :namespace => 'rack.session', :expires_in => 3600)
 end
 
 # Use the Dalli Rack session implementation
