@@ -91,7 +91,7 @@ get '/code' do
 end  
 
 get '/classdetail' do
-  @class = @access_token.get("#{@instance_url}/services/data/v28.0/tooling/sobjects/ApexClass//#{params[:id]}").parsed
+  @class = @access_token.get("#{@instance_url}/services/data/v28.0/tooling/sobjects/ApexClass/#{params[:id]}").parsed
   erb :classdetail
 end
 
