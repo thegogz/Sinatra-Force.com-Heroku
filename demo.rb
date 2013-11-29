@@ -90,6 +90,14 @@ get '/code' do
   erb :code
 end  
 
+get '/cases' do
+    query = "Select id, CaseNumber, CreatedDate, LastModifiedDate, ClosedDate, IsClosed, Status, (Select Id, ParentId, ActivityId, CreatedById, CreatedDate, LastModifiedDate, LastModifiedById, SystemModstamp, TextBody, HtmlBody, Headers, Subject, FromName, FromAddress, ToAddress, CcAddress, BccAddress, Incoming, HasAttachment, Status, MessageDate, IsDeleted, ReplyToEmailMessageId From EmailMessages), (Select Id, IsDeleted, CaseId, CreatedById, CreatedDate, Field, OldValue, NewValue From Histories) from Case Where CreatedDate = LAST_N_WEEKS:1"
+    
+    @cases = @access_token.get("#{@instance_url}/services/data/v29.0/query/?q=#{CGI::escape(query)}").parsed
+    
+    erb :cases
+end
+
 get '/classdetail' do
   @class = @access_token.get("#{@instance_url}/services/data/v28.0/tooling/sobjects/ApexClass/#{params[:id]}").parsed
   erb :classdetail

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Case Data</title>
+		<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+		<h2>Case Analytics</h2>
+    <h4><%= @cases['size'] %> Cases for the Last Week</h4>
+		<table class="CasesList">
+    <% if @cases['records'] %>
+      <!-- <tr>
+      <th>Class Name</th>
+	  <th>NameSpace</th>
+	  <th>Api Version</th>
+	  <th>Is Valid</th>
+	  <th>Staus</th>
+	  <th>Id</th>
+	  <th>Length</th>
+      </tr>
+      <% @classes['records'].each do |record|  %>
+      <tr>
+			<td>
+				<a href="classdetail?id=<%= record['Id'] %>"><%= record['Name'] %></a>
+			</td>
+			<td>
+				<%= record['NamespacePrefix'] %> 
+			</td>
+			<td>
+				<%= record['ApiVersion'] %> 
+			</td>
+			<td>
+				<%= record['IsValid'] %> 
+			</td>
+			<td>
+				<%= record['Status'] %> 
+			</td>
+			<td>
+				<%= record['Id'] %> 
+			</td>
+			<td>
+				<%= record['LengthWithoutComments'] %> 
+			</td>
+		</tr> -->
+      <% end %>
+    <% end %>      
+		</table>
+		<br/>
+		<a href="logout" id="logout">Logout</a>
+	</body>
+</html>
